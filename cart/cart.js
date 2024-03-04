@@ -6,7 +6,13 @@
  * 
  */
 const addToCart = (aCart, prodotto) => {
+    try{
+    if(prodotto.qty===0)throw new Error(`${prodotto.name}: Quantity must be greatest than 0`);
+    if(prodotto.price===0)throw new Error(`${prodotto.name}:Price must be greatest than 0`);
     aCart.push(prodotto);
+    }catch(error){
+    console.log(error.message);
+    }
     return aCart;
 }
 
@@ -17,11 +23,11 @@ const addToCart = (aCart, prodotto) => {
  */
 
 export const add3Products=(aCart)=>{
-    let newCart=addToCart(aCart,{
-        name:'iphone',
-        price:1500,
-        qty:2
-    })
+    let  newCart=addToCart(aCart,{
+            name:'iphone',
+            price:1500,
+            qty:2
+        })
 
      newCart=addToCart(aCart,{
         name:'galaxy',
